@@ -1,4 +1,4 @@
-package com.moin.remittance.service;
+package com.ranjan.remittance.service;
 
 import org.springframework.stereotype.Service;
 

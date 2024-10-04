@@ -1,4 +1,4 @@
-package com.moin.remittance.service;
+package com.ranjan.remittance.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,18 +8,18 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.moin.remittance.constants.Constants;
-import com.moin.remittance.model.RemittanceInfo;
-import com.moin.remittance.model.RemittanceQuote;
-import com.moin.remittance.model.TransactionHistory;
-import com.moin.remittance.model.UserDetail;
-import com.moin.remittance.repository.RemittanceQuoteRepository;
-import com.moin.remittance.repository.UserRepository;
-import com.moin.remittance.util.AuthUtil;
-import com.moin.remittance.util.CurrencyUtil;
-import com.moin.remittance.util.DateUtil;
-import com.moin.remittance.util.EncrpytionUtil;
-import com.moin.remittance.util.MathUtil;
+import com.ranjan.remittance.constants.Constants;
+import com.ranjan.remittance.model.RemittanceInfo;
+import com.ranjan.remittance.model.RemittanceQuote;
+import com.ranjan.remittance.model.TransactionHistory;
+import com.ranjan.remittance.model.UserDetail;
+import com.ranjan.remittance.repository.RemittanceQuoteRepository;
+import com.ranjan.remittance.repository.UserRepository;
+import com.ranjan.remittance.util.AuthUtil;
+import com.ranjan.remittance.util.CurrencyUtil;
+import com.ranjan.remittance.util.DateUtil;
+import com.ranjan.remittance.util.EncrpytionUtil;
+import com.ranjan.remittance.util.MathUtil;
 
 @Service
 public class ServiceHelper {

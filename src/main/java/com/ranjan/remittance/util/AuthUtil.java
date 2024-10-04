@@ -1,4 +1,4 @@
-package com.moin.remittance.util;
+package com.ranjan.remittance.util;
 
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -6,7 +6,7 @@ import java.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.moin.remittance.model.UserDetail;
+import com.ranjan.remittance.model.UserDetail;
 
 @Configuration
 public class AuthUtil {

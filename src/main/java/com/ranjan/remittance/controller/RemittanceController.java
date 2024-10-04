@@ -1,65 +1,58 @@
-package com.moin.remittance.controller;
+package com.ranjan.remittance.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.moin.remittance.constants.Constants;
-import com.moin.remittance.model.RemittanceInfo;
-import com.moin.remittance.model.RemittanceQuote;
-import com.moin.remittance.model.UserDetail;
-import com.moin.remittance.service.RemittanceService;
+import com.ranjan.remittance.constants.Constants;
+import com.ranjan.remittance.model.RemittanceInfo;
+import com.ranjan.remittance.model.RemittanceQuote;
+import com.ranjan.remittance.model.UserDetail;
+import com.ranjan.remittance.service.RemittanceService;
+
+//import io.swagger.v3.oas.annotations.tags.Tag;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+import static org.springframework.http.HttpStatus.CREATED;
+
 @RestController
-@RequestMapping(value = "/")
+//@Tag("Remittance")
+@RequiredArgsConstructor
 public class RemittanceController {
-	private static final Logger logger = LogManager.getLogger(RemittanceController.class);
+
+	private static final Logger log = LogManager.getLogger(RemittanceController.class);
 	private final RemittanceService remittanceService;
-	
-	public RemittanceController(RemittanceService remittanceService) {
-        this.remittanceService = remittanceService;
-	}
-	
+
 	@PostMapping("/user/signup")
-    public String createUserAccount(@RequestBody UserDetail signupDetail) {
-		logger.info("Method : createUserAccount()");
-//		logger.info("UserDetail value received in Request : " + signupDetail);
+	@ResponseStatus(CREATED)
+	public ResponseEntity<String> createUserAccount(@Validated @RequestBody UserDetail request) {
+		log.info("Method : createUserAccount()");
+		log.debug("Create User Account : {}", request);
 
 		JsonObject jsonResponse = new JsonObject();
-		try {
-			remittanceService.createAccount(signupDetail);
-			
-			if(signupDetail.isAccountCheck()) {
-				jsonResponse.addProperty("resultCode", 200);
-			    jsonResponse.addProperty("resultMsg", Constants.Result_OK);
-			    return jsonResponse.toString();
-			}
-			else {
-				jsonResponse.addProperty("resultCode", 200);
-			    jsonResponse.addProperty("resultMsg", Constants.Invalid_User_Data);
-			    return jsonResponse.toString();
-			}
-		}
-		catch(Exception e) {
-			logger.error("Exception occured in createUserAccount()");
-			e.printStackTrace();
+		remittanceService.createAccount(request);
+
+		if(request.isAccountCheck()) {
 			jsonResponse.addProperty("resultCode", 200);
-		    jsonResponse.addProperty("resultMsg", Constants.Unknown_Error);
-		    return jsonResponse.toString();
+			jsonResponse.addProperty("resultMsg", Constants.Result_OK);
+			return ResponseEntity.status(CREATED).body(jsonResponse.toString());
+		}
+		else {
+			jsonResponse.addProperty("resultCode", 200);
+			jsonResponse.addProperty("resultMsg", Constants.Invalid_User_Data);
+			return ResponseEntity.status(CREATED).body(jsonResponse.toString());
 		}
     }
 	
 	@PostMapping("/user/login")
     public String userLogin(@RequestBody UserDetail loginDetail) {
-		logger.info("Method : userLogin()");
+		log.info("Method : userLogin()");
 //		logger.info("UserDetail value received in Request : " + loginDetail);
 		
 		JsonObject jsonResponse = new JsonObject();
@@ -79,7 +72,7 @@ public class RemittanceController {
 			}
 		}
 		catch(Exception e) {
-			logger.error("Exception occured in userLogin()");
+			log.error("Exception occured in userLogin()");
 			e.printStackTrace();
 			jsonResponse.addProperty("resultCode", 200);
 		    jsonResponse.addProperty("resultMsg", Constants.Unknown_Error);
@@ -89,7 +82,7 @@ public class RemittanceController {
 	
 	@PostMapping("/transfer/quote")
     public String getRemittanceQuote(@RequestBody RemittanceQuote quoteInfo, HttpServletRequest request) {
-		logger.info("Method : getRemittanceQuote()");
+		log.info("Method : getRemittanceQuote()");
 //		logger.info("Remittance Quote received in Request : " + quoteInfo);
 
 		JsonObject jsonResponse = new JsonObject();
@@ -115,7 +108,7 @@ public class RemittanceController {
 			}
 		}
 		catch(Exception e) {
-			logger.error("Exception occured in getRemittanceQuote()");
+			log.error("Exception occured in getRemittanceQuote()");
 			e.printStackTrace();
 			jsonResponse.addProperty("resultCode", 200);
 		    jsonResponse.addProperty("resultMsg", Constants.Unknown_Error);
@@ -125,7 +118,7 @@ public class RemittanceController {
 	
 	@PostMapping("/transfer/request")
     public String getRemittanceReceipt(@RequestBody RemittanceQuote remittanceReceiptInfo, HttpServletRequest request) {
-		logger.info("Method : getRemittanceReceipt()");
+		log.info("Method : getRemittanceReceipt()");
 //		logger.info("Quote Info received in Request : " + remittanceReceiptInfo);
 
 		JsonObject jsonResponse = new JsonObject();
@@ -145,7 +138,7 @@ public class RemittanceController {
 			}
 		}
 		catch(Exception e) {
-			logger.error("Exception occured in getRemittanceReceipt()");
+			log.error("Exception occured in getRemittanceReceipt()");
 			e.printStackTrace();
 			jsonResponse.addProperty("resultCode", 200);
 		    jsonResponse.addProperty("resultMsg", Constants.Unknown_Error);
@@ -155,7 +148,7 @@ public class RemittanceController {
 	
 	@GetMapping("/transfer/list")
     public String retrieveTransactionHistory(HttpServletRequest request) {
-		logger.info("Method : retrieveTransactionHistory()");
+		log.info("Method : retrieveTransactionHistory()");
 		
 		JsonObject jsonResponse = new JsonObject();
 		JsonArray jsonArray = new JsonArray();
@@ -199,7 +192,7 @@ public class RemittanceController {
 	            return jsonResponse.toString();
     		}
 		} catch(Exception e) {
-			logger.error("Exception occured in retrieveTransactionHistory()");
+			log.error("Exception occured in retrieveTransactionHistory()");
 			e.printStackTrace();
 			jsonResponse.addProperty("resultCode", 200);
 		    jsonResponse.addProperty("resultMsg", Constants.Unknown_Error);

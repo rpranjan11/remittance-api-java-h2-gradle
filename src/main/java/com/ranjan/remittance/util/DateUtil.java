@@ -1,4 +1,4 @@
-package com.moin.remittance.util;
+package com.ranjan.remittance.util;
 
 import java.time.LocalDateTime;
 

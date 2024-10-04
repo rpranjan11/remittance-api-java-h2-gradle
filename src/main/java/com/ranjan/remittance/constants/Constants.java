@@ -1,4 +1,4 @@
-package com.moin.remittance.constants;
+package com.ranjan.remittance.constants;
 
 public class Constants {
 	

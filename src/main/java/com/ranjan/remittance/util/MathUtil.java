@@ -1,4 +1,4 @@
-package com.moin.remittance.util;
+package com.ranjan.remittance.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

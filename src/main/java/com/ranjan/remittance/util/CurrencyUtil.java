@@ -1,4 +1,4 @@
-package com.moin.remittance.util;
+package com.ranjan.remittance.util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moin.remittance.model.ExchangeInfo;
+import com.ranjan.remittance.model.ExchangeInfo;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;

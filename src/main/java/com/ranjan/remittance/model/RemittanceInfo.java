@@ -1,4 +1,4 @@
-package com.moin.remittance.model;
+package com.ranjan.remittance.model;
 
 import java.util.List;
 

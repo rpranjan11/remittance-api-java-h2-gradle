@@ -1,4 +1,4 @@
-package com.moin.remittance.util;
+package com.ranjan.remittance.util;
 
 import org.jasypt.util.text.AES256TextEncryptor;
 import org.springframework.context.annotation.Configuration;
