@@ -1,8 +1,15 @@
- 
+### Introduction
+This is a Gradle Project developed with Java and h2 database. The description of this project is [here] (https://documenter.getpostman.com/view/31648094/2sA2r9Wiqj).
+The project is done to get expert in API development using latest developed features of Java.
+
+For more amazing repos and my info, follow my github account and follow me on linkedin OR instagram.
+
+Socials: [Linkedin] https://www.linkedin.com/in/rpranjan11/ [Instagram] https://www.instagram.com/try.ambakam/ 
+
 ### Installation
 In order to run/execute/deploy this project, following software/tools/packages needs to be installed:
 * Java - version=<17 [I used version 21]
-* Eclipse IDE - Latest version [preferred]
+* IntelliJ OR Eclipse IDE - Latest version [preferred]
 
 ### Project setup in Eclipse IDE
 * Install Buildship Gradle Integration form the Eclipse marketplace
@@ -24,7 +31,4 @@ All the Assignment constraints and guidelines have been fulfilled as per my best
 * Used Utility classes to separate the Utility functionality from the service/business logics
 * JUnit Test cases are implemented for all the APIs in the test package
 * There can be still a scope of code clean, implement any missed logic, introducing inner layers, proper error and exception management, unique Authentication & Authorization process, etc. to make the project production-level. Due to time constraint, I have focused to fulfill the most necessary constraints and deliver the assignment.
-
-
-### Also, I have uploaded a video in the same drive folder of project running in my PC. The video contains calling APIs from Postman and verifying execution from logs and API responses, checking success, invalid, and error scenarios of APIs.
 
