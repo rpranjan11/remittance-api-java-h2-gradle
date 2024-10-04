@@ -1,5 +1,5 @@
 ### Introduction
-This is a Gradle Project developed with Java and h2 database. The description of this project is [here] (https://documenter.getpostman.com/view/31648094/2sA2r9Wiqj).
+This is a Gradle Project developed with Java and h2 database. The description of this project is [here](https://documenter.getpostman.com/view/31648094/2sA2r9Wiqj).
 The project is done to get expert in API development using latest developed features of Java.
 
 For more amazing repos and my info, follow my github account and follow me on linkedin OR instagram.
