@@ -13,20 +13,20 @@ import java.time.LocalDate;
 
 public record UserCreateRequest(
 
-//    @Schema(title = "Description", example = "Development Manager")
-//    String description,
-//
-//    @Schema(title = "ExpiryDate", example = "2024-12-04")
-//    LocalDate expireDate,
-//
-//    @Schema(title = "Locked", example = "false")
-//    boolean locked
+    @Schema(title = "Description", example = "Development Manager")
+    String description,
+
+    @Schema(title = "ExpiryDate", example = "2024-12-04")
+    LocalDate expireDate,
+
+    @Schema(title = "Locked", example = "false")
+    boolean locked
 
 ) implements Serializable {
 
-//    public static final AccountMapped mapped = Mappers.getMapper(AccountMapped.class);
-//
-//    @Mapper
-//    public interface AccountMapped extends Mappable<UserDetail, UserCreateRequest> {
-//    }
+    public static final AccountMapped mapped = Mappers.getMapper(AccountMapped.class);
+
+    @Mapper
+    public interface AccountMapped extends Mappable<UserDetail, UserCreateRequest> {
+    }
 }
